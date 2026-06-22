@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="referrer" content="no-referrer">
+  <title>GhansProject | Develop Website & Bug Fixing</title>
+
+  <meta name="description"
+    content="Jasa Pembuatan Website Kustom, Company Profile Cafe, Klinik, Perusahaan & Bug Solving Express. Dapatkan website premium, cepat & responsif.">
+  <meta name="keywords"
+    content="jasa website, pembuatan website, company profile cafe, company profile klinik, bug solving, fix bug website, alpine.js, developer website, web programmer">
+  <meta name="author" content="Ghani">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="GhansProject | Develop Website & Bug Fixing Premium">
+  <meta property="og:description"
+    content="Tingkatkan kredibilitas bisnismu dengan website premium kustom, company profile cafe/klinik, & perbaikan bug website express.">
+  <meta property="og:image"
+    content="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=800">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <link rel="stylesheet" href="style.css">
+
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script src="app.js"></script>
+</head>
+
+<body x-data="app">
+
+  <div class="ambient-glow glow-top-left"></div>
+  <div class="ambient-glow glow-mid-right"></div>
+  <div class="ambient-glow glow-bottom-right"></div>
+
+  <div class="glass-container">
+
+    <header class="profile-section">
+      <div class="avatar-wrapper">
+        <div class="avatar-glow"></div>
+        <img class="avatar-image" referrerpolicy="no-referrer" src="/assets/profile.png">
+      </div>
+
+      <h1 class="profile-title text-gradient-primary">GhannProject</h1>
+
+      <div class="profile-badge">
+        <span class="pulse"></span>
+        <span>Open for Projects</span>
+      </div>
+
+      <p class="profile-subtitle">
+        Ubah ide hebat Anda menjadi aset digital. Mulai dari website premium, company profile modern, hingga optimasi
+        sistem—semuanya dirancang rapi, cepat, dan bebas error.
+      </p>
+
+      <div class="social-icons-wrapper">
+        <a href="https://instagram.com" target="_blank" class="social-btn" aria-label="Instagram">
+          <i class="fa-brands fa-instagram"></i>
+        </a>
+        <a href="https://github.com" target="_blank" class="social-btn" aria-label="GitHub">
+          <i class="fa-brands fa-github"></i>
+        </a>
+        <a href="#" @click.prevent="openConsultation('website')" class="social-btn" aria-label="Contact / Email">
+          <i class="fa-regular fa-envelope"></i>
+        </a>
+      </div>
+    </header>
+
+    <main>
+      <section id="services">
+        <div class="section-header">
+          <h2 class="section-title">
+            <i class="fa-solid fa-gem text-gradient-purple" style="-webkit-text-fill-color: initial;"></i>
+            Layanan Market
+          </h2>
+        </div>
+
+        <div class="links-list">
+          <template x-for="service in services" :key="service.id">
+            <div class="service-link-card" :class="{ 'expanded': expandedService === service.id }"
+              @click="toggleService(service.id)">
+
+              <div class="service-card-main">
+                <div class="service-icon-box" :class="service.colorClass">
+                  <i :class="service.icon"></i>
+                </div>
+
+                <div class="service-info">
+                  <h3 class="service-title-text" x-text="service.title"></h3>
+                  <p class="service-desc-brief" x-text="service.brief"></p>
+                </div>
+
+                <span class="service-badge-pill" x-text="service.badge"></span>
+                <i class="fa-solid fa-chevron-right service-arrow"></i>
+              </div>
+
+              <div class="service-details" x-show="expandedService === service.id" x-collapse
+                x-transition:enter="transition ease-out duration-300"
+                x-transition:enter-start="opacity-0 transform -translate-y-2"
+                x-transition:enter-end="opacity-100 transform translate-y-0" @click.stop>
+
+                <ul class="features-list">
+                  <template x-for="feature in service.features" :key="feature">
+                    <li class="feature-item">
+                      <i class="fa-solid fa-circle-check"></i>
+                      <span x-text="feature"></span>
+                    </li>
+                  </template>
+                </ul>
+
+                <div class="details-footer">
+                  <div class="price-info">
+                    <div class="price-label" x-text="service.priceLabel"></div>
+                    <div class="price-val" x-text="service.price"></div>
+                  </div>
+
+                  <div style="display: flex; gap: 0.5rem;">
+                    <button class="btn-premium" @click="openConsultation(service.id)">
+                      <i class="fa-regular fa-comment-dots"></i> Konsultasi
+                    </button>
+                    <button class="btn-premium btn-whatsapp" @click="orderServiceDirect(service.id)">
+                      <i class="fa-brands fa-whatsapp"></i> Order Now
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </template>
+        </div>
+      </section>
+
+      <section id="calculator">
+        <div class="glass-card calc-card">
+          <div class="calc-title-box">
+            <div class="calc-icon">
+              <i class="fa-solid fa-calculator"></i>
+            </div>
+            <div>
+              <h3 style="font-size: 1.15rem; color: #fff;">Estimator Anggaran & Waktu</h3>
+              <p style="font-size: 0.8rem; color: var(--text-secondary);">Sesuaikan fitur & langsung dapatkan estimasi
+                biaya pengerjaan.</p>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Pilih Jenis Layanan</label>
+            <select class="custom-select" x-model="calc.serviceType">
+              <option value="website">Jasa Pembuatan Website Kustom</option>
+              <option value="company_profile">Company Profile (Cafe, Klinik, Bisnis)</option>
+              <option value="bug_solving">Bug Solving & Fix Website</option>
+            </select>
+          </div>
+
+          <div x-show="calc.serviceType !== 'bug_solving'" x-transition:enter="transition ease-out duration-200"
+            x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100">
+            <div class="form-group">
+              <label class="form-label">Jumlah Halaman Website</label>
+              <div class="range-slider-wrapper">
+                <input type="range" min="1" max="15" class="range-slider" x-model.number="calc.pages">
+                <span class="range-val-badge" x-text="calc.pages + ' Hal'"></span>
+              </div>
+              <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.4rem;">
+                *Sudah termasuk 3 halaman standard di paket dasar (Home, Tentang Kami, Hubungi Kami).
+              </p>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Pilih Fitur Tambahan</label>
+
+              <div class="features-grid" x-show="calc.serviceType === 'website'">
+                <label class="feature-checkbox-label" :class="{ 'selected': calc.features.cms }">
+                  <input type="checkbox" class="feature-checkbox" x-model="calc.features.cms">
+                  <div class="checkbox-text">
+                    <span class="checkbox-title">CMS / Admin Panel</span>
+                    <span class="checkbox-price">+ Rp 1.500.000</span>
+                  </div>
+                </label>
+
+                <label class="feature-checkbox-label" :class="{ 'selected': calc.features.payment }">
+                  <input type="checkbox" class="feature-checkbox" x-model="calc.features.payment">
+                  <div class="checkbox-text">
+                    <span class="checkbox-title">Payment Gateway</span>
+                    <span class="checkbox-price">+ Rp 1.200.000</span>
+                  </div>
+                </label>
+
+                <label class="feature-checkbox-label" :class="{ 'selected': calc.features.auth }">
+                  <input type="checkbox" class="feature-checkbox" x-model="calc.features.auth">
+                  <div class="checkbox-text">
+                    <span class="checkbox-title">User Auth / Database</span>
+                    <span class="checkbox-price">+ Rp 1.000.000</span>
+                  </div>
+                </label>
+
+                <label class="feature-checkbox-label" :class="{ 'selected': calc.features.multilang }">
+                  <input type="checkbox" class="feature-checkbox" x-model="calc.features.multilang">
+                  <div class="checkbox-text">
+                    <span class="checkbox-title">Multi-Bahasa</span>
+                    <span class="checkbox-price">+ Rp 600.000</span>
+                  </div>
+                </label>
+
+                <label class="feature-checkbox-label" :class="{ 'selected': calc.features.seo }">
+                  <input type="checkbox" class="feature-checkbox" x-model="calc.features.seo">
+                  <div class="checkbox-text">
+                    <span class="checkbox-title">SEO Optimization</span>
+                    <span class="checkbox-price">+ Rp 300.000</span>
+                  </div>
+                </label>
+              </div>
+
+              <div class="features-grid" x-show="calc.serviceType === 'company_profile'">
+                <label class="feature-checkbox-label" :class="{ 'selected': calc.features.booking }">
+                  <input type="checkbox" class="feature-checkbox" x-model="calc.features.booking">
+                  <div class="checkbox-text">
+                    <span class="checkbox-title">Reservasi / Booking WA</span>
+                    <span class="checkbox-price">+ Rp 500.000</span>
+                  </div>
+                </label>
+
+                <label class="feature-checkbox-label" :class="{ 'selected': calc.features.cms }">
+                  <input type="checkbox" class="feature-checkbox" x-model="calc.features.cms">
+                  <div class="checkbox-text">
+                    <span class="checkbox-title">CMS Menu / Galeri Cafe</span>
+                    <span class="checkbox-price">+ Rp 800.000</span>
+                  </div>
+                </label>
+
+                <label class="feature-checkbox-label" :class="{ 'selected': calc.features.multilang }">
+                  <input type="checkbox" class="feature-checkbox" x-model="calc.features.multilang">
+                  <div class="checkbox-text">
+                    <span class="checkbox-title">Multi-Bahasa</span>
+                    <span class="checkbox-price">+ Rp 500.000</span>
+                  </div>
+                </label>
+
+                <label class="feature-checkbox-label" :class="{ 'selected': calc.features.seo }">
+                  <input type="checkbox" class="feature-checkbox" x-model="calc.features.seo">
+                  <div class="checkbox-text">
+                    <span class="checkbox-title">SEO & Google Maps</span>
+                    <span class="checkbox-price">+ Rp 300.000</span>
+                  </div>
+                </label>
+              </div>
+
+            </div>
+          </div>
+
+          <div x-show="calc.serviceType === 'bug_solving'" x-transition:enter="transition ease-out duration-200"
+            x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100">
+            <div class="form-group">
+              <label class="form-label">Tingkat Kerumitan Bug</label>
+              <select class="custom-select" x-model="calc.complexity">
+                <option value="easy">Ringan / Minor Bug (Misal: Layout rusak, link mati, ganti teks)</option>
+                <option value="medium">Sedang / Functional Bug (Misal: Form error, js crash, logic gagal)</option>
+                <option value="hard">Kompleks / Database & System (Misal: Error backend, database leak, crash hosting)
+                </option>
+              </select>
+            </div>
+          </div>
+
+          <div class="calc-result-panel">
+            <div class="result-meta">
+              <div class="result-price-label">Estimasi Investasi</div>
+              <div class="result-price-val" x-text="formatRupiah(calc.estimatedPrice)"></div>
+              <div class="result-timeline">
+                <i class="fa-regular fa-clock"></i>
+                <span x-text="'Timeline: ' + calc.estimatedTimeline"></span>
+              </div>
+            </div>
+
+            <button class="btn-premium btn-whatsapp" @click="orderCalculatedSetup()">
+              <i class="fa-brands fa-whatsapp"></i> Pesan via WhatsApp
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section id="faqs" style="margin-top: 2rem;">
+        <div class="section-header">
+          <h2 class="section-title">
+            <i class="fa-solid fa-circle-question text-gradient-primary" style="-webkit-text-fill-color: initial;"></i>
+            FAQ
+          </h2>
+        </div>
+
+        <div class="faq-list">
+          <template x-for="(faq, index) in faqs" :key="index">
+            <div class="faq-item" :class="{ 'active': faqIndex === index }">
+              <button class="faq-question-btn" @click="faqIndex = (faqIndex === index ? null : index)">
+                <span class="faq-q-text" x-text="faq.q"></span>
+                <i class="fa-solid fa-chevron-down faq-icon-arrow"></i>
+              </button>
+
+              <div class="faq-answer">
+                <p class="faq-a-text" x-text="faq.a"></p>
+              </div>
+            </div>
+          </template>
+        </div>
+      </section>
+    </main>
+
+    <div class="modal-overlay" x-show="modalOpen" x-transition.opacity style="display: none;">
+      <div class="modal-content-box" @click.away="modalOpen = false">
+        <button class="modal-close-btn" @click="modalOpen = false">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+
+        <div class="modal-header">
+          <h3 class="modal-title">Konsultasi Project Gratis</h3>
+          <p class="modal-subtitle">Isi data di bawah, sistem otomatis membuat pesan WhatsApp detail.</p>
+        </div>
+
+        <form @submit.prevent="submitConsultation">
+          <div class="form-group">
+            <label class="form-label">Nama Lengkap</label>
+            <input type="text" class="custom-input" placeholder="Masukkan nama Anda..." x-model="contactForm.name"
+              required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Alamat Email (Opsional)</label>
+            <input type="email" class="custom-input" placeholder="nama@email.com" x-model="contactForm.email">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Layanan yang Diminati</label>
+            <select class="custom-select" x-model="contactForm.service">
+              <option value="website">Jasa Pembuatan Website Kustom</option>
+              <option value="company_profile">Company Profile</option>
+              <option value="bug_solving">Bug Solving & Fix Website</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Catatan Tambahan / Detail Kendala</label>
+            <textarea class="custom-textarea"
+              placeholder="Jelaskan kebutuhan website Anda atau masalah bug yang sedang dihadapi..."
+              x-model="contactForm.details"></textarea>
+          </div>
+
+          <button type="submit" class="btn-premium btn-whatsapp"
+            style="width: 100%; padding: 0.8rem; border-radius: 12px; margin-top: 0.5rem;">
+            <i class="fa-brands fa-whatsapp"></i> Kirim Form ke WhatsApp
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <footer class="site-footer">
+      <div class="footer-logo text-gradient-primary">GhannProject.</div>
+      <p class="footer-copy">© 2026 Ghani. All Rights Reserved.</p>
+      <div class="footer-links">
+        <a href="#services" class="footer-link-item">Layanan</a>
+        <a href="#calculator" class="footer-link-item">Kalkulator Biaya</a>
+        <a href="#portfolio" class="footer-link-item">Portofolio</a>
+        <a href="#faqs" class="footer-link-item">FAQ</a>
+      </div>
+    </footer>
+
+  </div>
+
+</body>
+
+</html>

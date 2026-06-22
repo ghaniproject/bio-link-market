@@ -1,0 +1,29 @@
+{
+  "name": "link-market",
+  "version": "1.0.0",
+  "description": "Premium Link-in-Bio and Portfolio Website for Instagram",
+  "main": "index.html",
+  "scripts": {
+    "dev": "nodemon -e js,mjs,json,css,html server.js",
+    "production": "node server.js"
+  },
+  "keywords": [
+    "link-in-bio",
+    "instagram",
+    "alpinejs",
+    "vanilla-css",
+    "portfolio"
+  ],
+  "author": "Ghani",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "nodemailer": "^8.0.10"
+  },
+  "devDependencies": {
+    "connect-livereload": "^0.6.1",
+    "livereload": "^0.10.3"
+  }
+}
