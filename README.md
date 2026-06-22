@@ -1,7 +1,8 @@
-<img src="assets/web-sample.png" alt="">
 
 
-# bio-link-market
+# Bio Link Market
+
+![web-sample](assets/web-sample.png)
 
 A Link-in-Bio and service portfolio page built with vanilla HTML, CSS, Alpine.js, and Node.js (Express). Designed for freelance developers to showcase services, handle client consultations, and integrate WhatsApp ordering directly from the page.
 
