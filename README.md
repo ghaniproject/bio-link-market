@@ -5,16 +5,4 @@
 pnpm run dev
 ```
 
-## build app
-
-```bash
-  pnpm run build
-```
-
-## deploy
-
-```bash
-  pnpm start
-```
-
 
