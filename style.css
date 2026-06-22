@@ -1,11 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
 
-/* --- PREMIUM CSS DESIGN SYSTEM --- */
 :root {
   --font-heading: 'Outfit', sans-serif;
   --font-body: 'Plus Jakarta Sans', sans-serif;
 
-  /* Colors */
   --bg-deep: #070913;
   --bg-dark: #0c0f1d;
   --bg-slate: #13192e;
@@ -38,7 +36,6 @@
   --transition-fast: all 0.2s ease;
 }
 
-/* Base resets */
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -82,7 +79,6 @@ body {
   color: #fff;
 }
 
-/* --- TYPOGRAPHY & GRADIENTS --- */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
   font-weight: 700;
@@ -117,7 +113,6 @@ h1, h2, h3, h4, h5, h6 {
   -webkit-text-fill-color: transparent;
 }
 
-/* --- DECORATIVE ELEMENTS --- */
 .ambient-glow {
   position: absolute;
   width: 350px;
@@ -147,7 +142,6 @@ h1, h2, h3, h4, h5, h6 {
   background: var(--secondary);
 }
 
-/* --- GLASS LAYOUTS --- */
 .glass-container {
   max-width: 680px;
   margin: 0 auto;
@@ -190,7 +184,6 @@ h1, h2, h3, h4, h5, h6 {
   box-shadow: var(--shadow-neon-primary), var(--shadow-card);
 }
 
-/* --- PROFILE HEADER --- */
 .profile-section {
   text-align: center;
   margin-bottom: 2.5rem;
@@ -274,7 +267,6 @@ h1, h2, h3, h4, h5, h6 {
   margin: 0 auto 1.5rem auto;
 }
 
-/* Social Icon Row */
 .social-icons-wrapper {
   display: flex;
   justify-content: center;
@@ -305,7 +297,6 @@ h1, h2, h3, h4, h5, h6 {
   box-shadow: 0 5px 15px rgba(99, 102, 241, 0.2);
 }
 
-/* --- THE MARKET LINKS (SERVICES) --- */
 .section-header {
   display: flex;
   align-items: center;
@@ -331,7 +322,6 @@ h1, h2, h3, h4, h5, h6 {
   gap: 1rem;
 }
 
-/* Interactive Service Card Accordion-Style */
 .service-link-card {
   cursor: pointer;
   padding: 1.25rem 1.5rem;
@@ -436,7 +426,6 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--primary);
 }
 
-/* Service Details Container */
 .service-details {
   border-top: 1px dashed var(--border-glass);
   margin-top: 1.25rem;
@@ -494,7 +483,6 @@ h1, h2, h3, h4, h5, h6 {
   color: #fff;
 }
 
-/* Button Call to Action */
 .btn-premium {
   display: inline-flex;
   align-items: center;
@@ -533,7 +521,6 @@ h1, h2, h3, h4, h5, h6 {
   box-shadow: 0 6px 20px rgba(16, 185, 129, 0.45);
 }
 
-/* --- INTERACTIVE CALCULATOR --- */
 .calc-card {
   margin-top: 2rem;
 }
@@ -570,7 +557,6 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 0.6rem;
 }
 
-/* Custom Dropdown/Select */
 .custom-select {
   width: 100%;
   background: rgba(255, 255, 255, 0.03);
@@ -596,7 +582,6 @@ h1, h2, h3, h4, h5, h6 {
   padding: 10px;
 }
 
-/* Slider Custom Styling */
 .range-slider-wrapper {
   display: flex;
   align-items: center;
@@ -637,7 +622,6 @@ h1, h2, h3, h4, h5, h6 {
   border: 1px solid rgba(6, 182, 212, 0.2);
 }
 
-/* Checkboxes / Features Grid */
 .features-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -721,7 +705,6 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--text-secondary);
 }
 
-/* Calculator Result Panel */
 .calc-result-panel {
   background: linear-gradient(135deg, rgba(99, 102, 241, 0.08), rgba(6, 182, 212, 0.08));
   border: 1px solid rgba(99, 102, 241, 0.2);
@@ -922,7 +905,6 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--text-muted);
 }
 
-/* --- CLIENT REVIEWS (SLIDER) --- */
 .reviews-slider {
   position: relative;
   text-align: left;
@@ -933,7 +915,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .star-rating {
-  color: #fbbf24; /* Amber star */
+  color: #fbbf24;
   display: flex;
   gap: 0.2rem;
   font-size: 0.9rem;
@@ -995,7 +977,6 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: 100px;
 }
 
-/* --- FAQ ACCORDION --- */
 .faq-list {
   display: flex;
   flex-direction: column;
@@ -1059,7 +1040,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .faq-item.active .faq-answer {
-  max-height: 1000px; /* arbitrary large value */
+  max-height: 1000px;
   transition: max-height 0.5s cubic-bezier(0.85, 0, 0.15, 1);
   padding: 0 1.25rem 1.25rem 1.25rem;
 }
@@ -1070,7 +1051,6 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1.5;
 }
 
-/* --- THE MODAL OVERLAY --- */
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -1143,7 +1123,6 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--text-secondary);
 }
 
-/* Custom Text inputs */
 .custom-input, .custom-textarea {
   width: 100%;
   background: rgba(255, 255, 255, 0.03);
@@ -1166,8 +1145,6 @@ h1, h2, h3, h4, h5, h6 {
   height: 100px;
   resize: none;
 }
-
-/* --- FOOTER & BRANDING --- */
 .site-footer {
   text-align: center;
   margin-top: 4rem;
