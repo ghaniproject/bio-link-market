@@ -30,7 +30,6 @@ Auto-rotating testimonial slider with reviewer name, company, rating, and review
 - HTML, Vanilla CSS, Alpine.js
 - Node.js with Express
 - Nodemailer for SMTP email
-- Live reload via `livereload` in development
 
 ## Getting Started
 
